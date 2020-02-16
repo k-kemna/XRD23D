@@ -2,7 +2,7 @@
 
 ---
 
-Standalone programs to combine files from XRD measurements with a given location to plot in 3D (see **DOI_OF_PUBLICATION** for more details)
+Standalone scripts to combine files from XRD measurements with a given location to plot in 3D (see **DOI_OF_PUBLICATION** for more details)
 
 ---
 
