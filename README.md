@@ -22,7 +22,7 @@ Follow instructions to combine multiple .csv files with XRD measurements and ass
   - You could prepare an file in excel and go to "Save As..." and select CSV as file format
 
 
-### Step 2 - Download executable program
+### Step 2 - Execute program
 
 - Git clone or download respository to your personal computer (green button in the upper right corner)
 - Go to __XRD23D/executables__ and exectute either the *win* or the *unix* (also mac) program depening on your machine by double-click
