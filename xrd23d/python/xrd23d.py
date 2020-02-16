@@ -134,64 +134,73 @@ def main():
     print(msg)
     log_list.append(msg)
 
-    # Get dirs and filename for height association
-    root = tk.Tk()
-    root.withdraw()
+    try:
 
-    print("Please select folder with .csv files containing XRD measurements")
-    xrd_csv_file_dir = filedialog.askdirectory(
-        title="Select folder with XRD measurements")
+        # Get dirs and filename for height association
+        root = tk.Tk()
+        root.withdraw()
 
-    print("\n")
-    print("Please select .csv file with location of each measurment")
-    loc_csv = filedialog.askopenfilename(title="Select .csv file with locations", filetypes=(
-        ("Location .csv file", "*.csv"), ("all files", "*.*")))
+        print("Please select folder with .csv files containing XRD measurements")
+        xrd_csv_file_dir = filedialog.askdirectory(
+            title="Select folder with XRD measurements")
 
-    print("\n")
-    print("Please select output folder")
-    output_dir = filedialog.askdirectory(title="Select output folder")
+        print("\n")
+        print("Please select .csv file with location of each measurment")
+        loc_csv = filedialog.askopenfilename(title="Select .csv file with locations", filetypes=(
+            ("Location .csv file", "*.csv"), ("all files", "*.*")))
 
-    print("Thanks!")
+        print("\n")
+        print("Please select output folder")
+        output_dir = filedialog.askdirectory(title="Select output folder")
 
-    # Read .csv file with location information into dictionary
-    loc_dict = _read_loc_dict(loc_csv)
-    msg = "+ Done - Read file with location. {} samples available".format(
-        len(loc_dict.keys()))
-    print(msg)
-    log_list.append(msg)
+        print("Thanks!")
 
-    # Get list of .csv xrd files
-    csv_file_list = [os.path.join(xrd_csv_file_dir, file) for file in os.listdir(
-        xrd_csv_file_dir) if fnmatch.fnmatch(file, "*csv")]
+        # Read .csv file with location information into dictionary
+        loc_dict = _read_loc_dict(loc_csv)
+        msg = "+ Done - Read file with location. {} samples available".format(
+            len(loc_dict.keys()))
+        print(msg)
+        log_list.append(msg)
 
-    msg = "+ {} XRD .csv files available".format(len(csv_file_list))
-    print(msg)
-    log_list.append(msg)
+        # Get list of .csv xrd files
+        csv_file_list = [os.path.join(xrd_csv_file_dir, file) for file in os.listdir(
+            xrd_csv_file_dir) if fnmatch.fnmatch(file, "*csv")]
 
-    # Run consistency check between csv files and location file
-    _check_cons(loc_dict, csv_file_list,log_list)
-    msg = "+ Start to combine .csv files and associate location"
-    print(msg)
-    log_list.append(msg)
+        msg = "+ {} XRD .csv files available".format(len(csv_file_list))
+        print(msg)
+        log_list.append(msg)
 
-    # Generate master list with xrd measruements and location
-    csv_master_list = _read_xrd_files(csv_file_list, loc_dict)
+        # Run consistency check between csv files and location file
+        _check_cons(loc_dict, csv_file_list,log_list)
+        msg = "+ Start to combine .csv files and associate location"
+        print(msg)
+        log_list.append(msg)
 
-    # Write .csv file
-    with open(os.path.join(output_dir, "combined_xrd_3d.csv"), 'w', newline='') as out_file:
-        writer = csv.writer(out_file)
+        # Generate master list with xrd measruements and location
+        csv_master_list = _read_xrd_files(csv_file_list, loc_dict)
 
-        # Write Header
-        writer.writerow(["Alpha", "Intensity", "Location"])
+        # Write .csv file
+        with open(os.path.join(output_dir, "combined_xrd_3d.csv"), 'w', newline='') as out_file:
+            writer = csv.writer(out_file)
 
-        # Write body
-        writer.writerows(csv_master_list)
+            # Write Header
+            writer.writerow(["Alpha", "Intensity", "Location"])
 
-    # Write log file
+            # Write body
+            writer.writerows(csv_master_list)
 
-    msg = "+\tDone - Saved .csv file with {} lines in {} ".format(len(csv_master_list),output_dir)
-    print(msg)
-    log_list.append(msg)
+        # Write log file
+
+        msg = "+\tDone - Saved .csv file with {} lines in {} ".format(len(csv_master_list),output_dir)
+        print(msg)
+        log_list.append(msg)
+
+
+
+    except Exception as e:
+        msg = "Ooops something went wrong.\n Detailed Error message: {}".format(e)
+        print(msg)
+        log_list.append(msg)
 
     with open(os.path.join(output_dir, "xrd23d_log.txt"), 'w', newline='') as log_file:
         log_file.write("\n".join(log_list))
