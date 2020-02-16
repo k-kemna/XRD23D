@@ -1,4 +1,4 @@
-# XRD23D - 3D Visulaization of XRD measurements
+# XRD23D - 3D Visualization of XRD measurements
 
 Standalone programs to combine files from XRD measurements with a given location to plot in 3D (see **DOI_OF_PUBLICATION** for more details)
 
