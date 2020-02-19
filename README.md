@@ -6,7 +6,7 @@ Standalone programs to combine files from XRD measurements with a given location
 
 Follow instructions to combine multiple .csv files with XRD measurements and associate a location to each measurement point to be able to plot the measurements in 3D
 
-### Step 1 – Prepare Input
+### Step 1 – Prepare Input Data
 
 - Prepare __folder__ with .csv files with XRD measurements
   - .csv files have to have __";"__ as delimiter
@@ -28,6 +28,6 @@ Follow instructions to combine multiple .csv files with XRD measurements and ass
   - 2. Select __.csv file__ with location of each measurement
   - 3. Select __folder__ where to save the combined file
     - File will be called combined_xrd_3d.csv
-    - xrd23d.log file contains further information and error messages
+    - xrd23d_log.txt file contains further information and error messages
 - Wait a second and check the terminal window for more information or potential errors
 - Press any key to close
