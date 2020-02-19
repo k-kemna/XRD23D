@@ -30,3 +30,8 @@ Follow instructions to combine multiple .csv files with XRD measurements and ass
     - xrd23d_log.txt file contains further information and error messages
 - Wait a second and check the terminal window for more information or potential errors
 - Press any key to close
+
+---
+
+For any problems feel free to open an issue by providing the xrd23d_log.txt file
+
