@@ -1,7 +1,6 @@
 # XRD23D - 3D Visualization of XRD measurements
 
-Standalone programs to combine files from XRD measurements with a given location to plot in 3D (see **DOI_OF_PUBLICATION** for more details)
-
+Standalone programs to combine files from XRD measurements with a given location to plot in 3D
 # Instructions
 
 Follow instructions to combine multiple .csv files with XRD measurements and associate a location to each measurement point to be able to plot the measurements in 3D
