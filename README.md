@@ -29,5 +29,5 @@ Follow instructions to combine multiple .csv files with XRD measurements and ass
   - 3. Select __folder__ where to save the combined file
     - File will be called combined_xrd_3d.csv
     - xrd23d.log file contains further information and error messages
-- Wait a second an check the terminal window for more information or potential errors
+- Wait a second and check the terminal window for more information or potential errors
 - Press any key to close
